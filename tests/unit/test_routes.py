@@ -102,7 +102,7 @@ def test_wrong_room(app):
 
 def test_empty_rooms(app):
     """
-    test activity_list route route with create/delete operations
+    test empty_rooms route
     """
     data_json = {
             "owner_name": "test 112212",
@@ -115,7 +115,7 @@ def test_empty_rooms(app):
                     json=data_json,
                     headers={'api_token': 'token'})
 
-    # check activity exists
+    # check empty rooms to not contain 19 room
     resp = app.get('/empty_rooms', headers={'api_token': 'token'})
     assert data_json['room_num'] not in loads(resp.data)['empty rooms']
 
